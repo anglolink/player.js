@@ -112,12 +112,12 @@ export function getOEmbedData(videoUrl, params = {}, element) {
             try {
                 const json = JSON.parse(xhr.responseText);
                 // Check api response for 403 on oembed
-                if (json.domain_status_code === 403) {
-                    // We still want to create the embed to give users visual feedback
-                    createEmbed(json, element);
-                    reject(new Error(`“${videoUrl}” is not embeddable.`));
-                    return;
-                }
+                // if (json.domain_status_code === 403) {
+                //     // We still want to create the embed to give users visual feedback
+                //     createEmbed(json, element);
+                //     reject(new Error(`“${videoUrl}” is not embeddable.`));
+                //     return;
+                // }
 
                 resolve(json);
             }
