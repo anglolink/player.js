@@ -273,7 +273,7 @@
     // special form of UMD for polyfilling across evironments
     context[name] = context[name] || definition();
 
-    if ( module.exports) {
+    if (module.exports) {
       module.exports = context[name];
     }
   })("Promise", typeof commonjsGlobal != "undefined" ? commonjsGlobal : commonjsGlobal, function DEF() {
@@ -780,7 +780,6 @@
 
   function getOEmbedData(videoUrl) {
     var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var element = arguments.length > 2 ? arguments[2] : undefined;
     return new Promise(function (resolve, reject) {
       if (!isVimeoUrl(videoUrl)) {
         throw new TypeError("\u201C".concat(videoUrl, "\u201D is not a vimeo.com url."));
@@ -810,13 +809,12 @@
 
         try {
           var json = JSON.parse(xhr.responseText); // Check api response for 403 on oembed
-
-          if (json.domain_status_code === 403) {
-            // We still want to create the embed to give users visual feedback
-            createEmbed(json, element);
-            reject(new Error("\u201C".concat(videoUrl, "\u201D is not embeddable.")));
-            return;
-          }
+          // if (json.domain_status_code === 403) {
+          //     // We still want to create the embed to give users visual feedback
+          //     createEmbed(json, element);
+          //     reject(new Error(`“${videoUrl}” is not embeddable.`));
+          //     return;
+          // }
 
           resolve(json);
         } catch (error) {
